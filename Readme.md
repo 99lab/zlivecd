@@ -11,7 +11,9 @@ mock -r fedora-37-x86_64 --shell --old-chroot --enable-network
 
 livemedia-creator --ks flat-fedora-live-WKS.ks --no-virt --resultdir /var/lmc --project Fedora-WKS-Live --make-iso --volid Fedora-WKS-37 --iso-only --iso-name Fedora-Live-WKS-37-x86_64.iso --releasever 37 
 
-cp /var/lib/mock/fedora-37-x86_64/root/var/lmc/*.iso $HOME
+rsync -avv --progress "$buildserver:/var/lib/mock/fedora-37-x86_64/root/var/lmc/*.iso" .
+rsync -avv --progress "$buildserver:/var/lib/mock/fedora-37-x86_64/root/builddir/*" .
+
 
 mock -r fedora-37-x86_64 --clean
 ```

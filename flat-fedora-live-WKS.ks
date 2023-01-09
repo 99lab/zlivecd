@@ -396,6 +396,11 @@ restorecon -R /home/liveuser/
 
 EOF
 
+dnf install -y https://zfsonlinux.org/fedora/zfs-release-2-2.fc37.noarch.rpm
+
+rpm -e --nodeps zfs-fuse
+dnf install -y zfs
+
 %end
 
 %packages
@@ -412,6 +417,11 @@ initscripts
 kernel
 kernel-modules
 kernel-modules-extra
+kernel-devel
+dkms
+arch-install-scripts
+gdisk
+dosfstools
 -@dial-up
 -@input-methods
 -@standard

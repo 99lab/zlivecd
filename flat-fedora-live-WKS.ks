@@ -394,12 +394,16 @@ fi
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
 
+EOF
+
+%end
+
+%post --log=/root/ks-zfs-post.log
+
 dnf install -y https://zfsonlinux.org/fedora/zfs-release-2-2.fc37.noarch.rpm
 
 rpm -e --nodeps zfs-fuse
 dnf install -y zfs
-
-EOF
 
 %end
 
